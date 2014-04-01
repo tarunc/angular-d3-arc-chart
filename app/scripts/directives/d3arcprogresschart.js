@@ -212,7 +212,7 @@ angular.module('betterworksTestApp')
 
             // Change the text in the label
             // and move around the percent label
-            label.text(Math.round(actual * 100) + '');
+            label.text(Math.round(arcs.actual.val * 100) + '');
             labelBounds = label.node().getBBox();
             percentLabel.attr('x', labelBounds.width / 2);
           };
