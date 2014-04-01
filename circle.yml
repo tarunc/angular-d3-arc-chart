@@ -1,0 +1,9 @@
+machine:
+  node:
+    version: 0.10.22
+  dependencies:
+    cache_directories:
+      - ".bower-cache"
+      - ".bower-registry"
+      - "node_modules"
+      - "app/bower_components"

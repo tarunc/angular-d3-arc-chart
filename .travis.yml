@@ -1,0 +1,15 @@
+language: node_js
+node_js:
+  - 0.10
+before_script:
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
+env:
+  global:
+    - COVERALLS_REPO_TOKEN=m3Z9p5t4SQLKw22IE9mkdr1iFSVpeJPoV
+cache:
+  directories:
+  - node_modules
+  - .bower-registry
+  - .bower-cache
+  - app/bower_components

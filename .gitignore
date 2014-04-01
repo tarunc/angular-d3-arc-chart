@@ -1,0 +1,30 @@
+node_modules
+dist
+.tmp
+.sass-cache
+app/bower_components
+
+npm-debug.log
+
+build/*
+dist/*
+report/*
+coverage/*
+temp/*
+
+# bower
+.bower-cache
+.bower-registry
+.bower-tmp
+
+# emacs and other IDEs
+*~
+*.iml
+
+# sublime project files
+*.sublime-project
+*.sublime-workspace
+
+# development ssl certificate
+*.crt
+*.key

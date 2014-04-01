@@ -1,0 +1,21 @@
+<div class="header">
+  <h3 class="text-muted">prepared for betterworks</h3>
+
+  <form class="form-horizontal" role="form">
+    <div class="form-group">
+      <label for="expected" class="col-sm-2 control-label">Expected</label>
+      <div class="col-sm-10">
+        <input type="number" class="form-control" id="expected" min="0" max="1" step="0.1" placeholder="Enter Expected" ng-model="model.expected">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="actual" class="col-sm-2 control-label">Actual</label>
+      <div class="col-sm-10">
+        <input type="number" class="form-control" id="actual" min="0" max="1" step="0.1" placeholder="Enter Actual" ng-model="model.actual">
+      </div>
+    </div>
+  </form>
+</div>
+
+<arc-progress-chart actual="model.actual" expected="model.expected"/>
