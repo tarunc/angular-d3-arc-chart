@@ -12,8 +12,11 @@ describe('Directive: D3ArcProgressChart', function() {
     scope = $rootScope.$new();
   }));
 
-  it('should make hidden element visible', inject(function($compile) {
-    element = angular.element('<-d3-arc-progress-chart></-d3-arc-progress-chart>');
+  it('should make element visible', inject(function($compile) {
+    element = angular.element('<arc-progress-chart actual="0.3" expected="0.5"></arc-progress-chart>');
     element = $compile(element)(scope);
+
+    var paths = d3.selectAll('path');
+    console.log(paths.length);
   }));
 });

@@ -53,15 +53,19 @@ angular.module('betterworksTestApp')
 
           var duration = displayParams.duration;
 
+          // Get the element
           var $ele = $(element[0]);
 
+          // The width and height of the element/svg
           var width = displayParams.width || ($ele.width() - 20);
           var height = displayParams.height || ($ele.height() - 20);
 
+          // Radius of the outer circle
           var baseRadius = displayParams.radius || Math.min(width, height) / 2;
 
           var target = d3.select(element[0]);
 
+          // Create the svg
           var svg = target
             .append('svg:svg')
             .attr('preserveAspectRatio', 'xMinYMin meet')
@@ -70,6 +74,7 @@ angular.module('betterworksTestApp')
             .style('height', height)
             .append('svg:g');
 
+          // Create the pie layout
           var pie = d3.layout.pie()
             .sort(null);
 
@@ -90,15 +95,18 @@ angular.module('betterworksTestApp')
               .innerRadius(baseRadius * (params.radius - params.width));
 
             function tween(d, i) {
+              // Hack jshint complains otherwise
               /* jshint validthis:true */
 
               var fn = d3.interpolate(this._current, d);
               this._current = fn(0);
+
               return function(t) {
                 return arc(fn(t));
               };
             }
 
+            // Store them in `arcs`
             arcs[which].arc = arc;
             arcs[which].tween = tween;
 
@@ -109,6 +117,7 @@ angular.module('betterworksTestApp')
             }, true);
           });
 
+          // Define a color function
           arcs.expected.color = function expectedColor(d, i) {
             if (!i) {
               return displayParams.expected.color;
@@ -126,11 +135,13 @@ angular.module('betterworksTestApp')
             .attr('class', displayParams.inner.classes)
             .attr('transform', 'translate(' + (width / 2) + ',' + (height / 2) + ')');
 
+          // Create the inner circle
           var circle = labels.append('circle')
             .attr('class', displayParams.inner.circle.classes)
             .attr('r', baseRadius * displayParams.inner.radius)
             .attr('fill', displayParams.inner.circle.color);
 
+          // Create the progress element
           var label = labels.append('text')
             .attr('class', 'svg-label actual-progress')
             .text(Math.round(actual * 100))
@@ -151,7 +162,8 @@ angular.module('betterworksTestApp')
             .attr('y', labelBounds.height / 2)
             .attr('dy', -10);
 
-          // define render function
+          // Define render function
+          // Gets rerun every time you change the params
           scope.render = function() {
             var diff = arcs.actual.val - arcs.expected.val;
 
@@ -170,6 +182,7 @@ angular.module('betterworksTestApp')
             };
 
             arcsArr.forEach(function(which) {
+              // Get the model for the arc we are drawing
               var model = arcs[which];
 
               // Select the arc
@@ -197,8 +210,9 @@ angular.module('betterworksTestApp')
               path.exit().remove();
             });
 
-            var text = Math.round(actual * 100) + '';
-            label.text(text);
+            // Change the text in the label
+            // and move around the percent label
+            label.text(Math.round(actual * 100) + '');
             labelBounds = label.node().getBBox();
             percentLabel.attr('x', labelBounds.width / 2);
           };

@@ -16,7 +16,20 @@ describe('Controller: MainCtrl', function() {
     });
   }));
 
-  it('should attach a list of awesomeThings to the scope', function() {
-    expect(scope.awesomeThings.length).toBe(3);
+  it('should attach the model to the scope', function() {
+    expect(scope.model).toBeDefined();
+  });
+
+  it('model should contain expected and actual', function() {
+    expect(scope.model.expected).toBeDefined();
+    expect(scope.model.actual).toBeDefined();
+  });
+
+  it('expected and actual should be within range [0, 1]', function() {
+    expect(scope.model.actual).toBeGreaterThan(0);
+    expect(scope.model.expected).toBeGreaterThan(0);
+
+    expect(scope.model.actual).toBeLessThan(1);
+    expect(scope.model.expected).toBeLessThan(1);
   });
 });
