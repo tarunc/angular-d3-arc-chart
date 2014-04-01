@@ -6,7 +6,7 @@ before_script:
   - sh -e /etc/init.d/xvfb start
 env:
   global:
-    - COVERALLS_REPO_TOKEN=m3Z9p5t4SQLKw22IE9mkdr1iFSVpeJPoV
+    - COVERALLS_REPO_TOKEN=L6wwcwROnM74htYHs0siaF2t3QidGSvyv
 cache:
   directories:
   - node_modules
