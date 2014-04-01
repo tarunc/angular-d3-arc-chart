@@ -32,4 +32,9 @@ describe('Controller: MainCtrl', function() {
     expect(scope.model.actual).toBeLessThan(1);
     expect(scope.model.expected).toBeLessThan(1);
   });
+
+  it('should have 2 paths drawn', function() {
+    var paths = d3.selectAll('path');
+    console.log(paths.length);
+  });
 });

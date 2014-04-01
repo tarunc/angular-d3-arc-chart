@@ -1,6 +1,6 @@
 'use strict';
 
-describe('Directive: D3ArcProgressChart', function() {
+describe('Directive: ArcProgressChart', function() {
 
   // load the directive's module
   beforeEach(module('betterworksTestApp'));
